@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《修行之路》目錄 | 數位閱讀門戶</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Zen Dark Theme (Default) */
+            --bg-color: #0d0f0c;
+            --card-bg: rgba(20, 26, 18, 0.65);
+            --card-border: rgba(140, 179, 114, 0.15);
+            --text-color: #e2e8e0;
+            --text-muted: #9ab092;
+            --primary: #8cb372;
+            --primary-hover: #a3c98b;
+            --primary-light: rgba(140, 179, 114, 0.1);
+            --accent: #e5c158;
+            --accent-bg: rgba(229, 193, 88, 0.1);
+            --border-color: rgba(140, 179, 114, 0.15);
+            --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            --selection-bg: rgba(140, 179, 114, 0.3);
+            --font-serif: 'Noto Serif TC', serif;
+            --font-sans: 'Noto Sans TC', sans-serif;
+            --font-mono: 'Outfit', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-theme="light"] {
+            /* Zen Light Theme */
+            --bg-color: #fcfaf6;
+            --card-bg: rgba(246, 241, 230, 0.85);
+            --card-border: rgba(93, 112, 82, 0.2);
+            --text-color: #273022;
+            --text-muted: #5e7058;
+            --primary: #4e6e39;
+            --primary-hover: #3d572c;
+            --primary-light: rgba(78, 110, 57, 0.08);
+            --accent: #b08d24;
+            --accent-bg: rgba(176, 141, 36, 0.08);
+            --border-color: rgba(78, 110, 57, 0.15);
+            --shadow: 0 12px 40px rgba(78, 110, 57, 0.06);
+            --selection-bg: rgba(78, 110, 57, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-serif);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(13, 15, 12, 0.4);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] header {
+            background-color: rgba(252, 250, 246, 0.5);
+        }
+
+        .header-brand {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.08);
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 4px 15px var(--primary-light);
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 1.5rem 5rem 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 2.8rem;
+            line-height: 1.3;
+            color: var(--text-color);
+            margin-bottom: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        /* Statistics Card */
+        .stats-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-val {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-lbl {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Directory List */
+        .directory-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .dir-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .dir-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(140, 179, 114, 0.15);
+        }
+
+        .dir-left {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+            padding-right: 1.5rem;
+        }
+
+        .dir-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dir-num {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .note-badge {
+            background-color: var(--primary-light);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-family: var(--font-sans);
+            padding: 1px 8px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+        }
+
+        .dir-title {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .dir-item:hover .dir-title {
+            color: var(--primary);
+        }
+
+        .dir-desc {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .dir-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            font-family: var(--font-sans);
+            min-width: 80px;
+        }
+
+        .dir-page {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .dir-info {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-family: var(--font-sans);
+        }
+
+        .footer-brand {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .dir-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .dir-right { align-items: flex-start; min-width: auto; border-top: 1px solid var(--border-color); width: 100%; padding-top: 8px; }
+            .stats-card { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header bar -->
+    <header>
+        <a href="#" class="header-brand">
+            <i class="fa-solid fa-compass"></i> 修行之路
+        </a>
+        <div class="header-controls">
+            <!-- Dark/Light Theme Button -->
+            <button id="theme-toggle" class="icon-btn" title="切換深淺主題">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>修行之路</h1>
+            <div class="subtitle">寫書即修行，完書即圓滿</div>
+        </div>
+
+        <!-- Statistics Card -->
+        <div class="stats-card">
+            <div class="stat-item">
+                <span class="stat-val">21</span>
+                <span class="stat-lbl">全書章節</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val">92</span>
+                <span class="stat-lbl">預估頁數</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val">24,068</span>
+                <span class="stat-lbl">總純字數</span>
+            </div>
+        </div>
+
+        <!-- Directory List -->
+        <div class="directory-list">
+
+            <!-- Item 序 -->
+            <a href="%E5%BA%8F_%E6%88%91%E6%83%B3%E6%B4%BB%E5%9C%A8%E8%87%AA%E5%B7%B1%E5%AF%AB%E7%9A%84%E6%9B%B8%E8%A3%A1.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Preface</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_preface_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">序：我想活在自己寫的書裡</div>
+                    <div class="dir-desc">我想活在自己寫的書裡。我開始寫這本書，就是因為我還沒到達。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 1</span>
+                    <span class="dir-info">2 頁 • 2 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第一章 -->
+            <a href="%E7%AC%AC%E4%B8%80%E7%AB%A0_%E9%82%A3%E5%80%8B%E6%97%A9%E6%99%A8%E8%82%A1%E7%A5%A8%E5%B4%A9%E7%9B%A4.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 01</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter1_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第一章：那個早晨，股票崩盤，我看見了一個陌生的自己</div>
+                    <div class="dir-desc">股票暴跌2600點時，被恐懼程式劫持的靈魂。在刺激與反應之間插入一個空隙。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 3</span>
+                    <span class="dir-info">5 頁 • 4 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第二章 -->
+            <a href="%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E9%82%A3%E5%80%8B%E6%80%A5%E8%BF%AB%E6%84%9F%E4%B8%8D%E6%98%AF%E6%88%91%E7%9A%84.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 02</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter2_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第二章：那個急迫感，不是我的</div>
+                    <div class="dir-desc">釐清急迫感的來源，看穿大腦自動化防禦機制，收回自己的主導權。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 8</span>
+                    <span class="dir-info">5 頁 • 4 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第三章 -->
+            <a href="%E7%AC%AC%E4%B8%89%E7%AB%A0_%E8%B6%8A%E9%80%83%E4%BB%A3%E5%83%B9%E8%B6%8A%E5%A4%A7.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 03</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter3_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第三章：越逃，代價越大</div>
+                    <div class="dir-desc">面對問題，越是逃避付出的代價就越大。直面真實的困境。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 13</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第四章 -->
+            <a href="%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E8%A6%BA%E7%9F%A5%E4%BA%86%E5%8D%BB%E6%B2%92%E6%9C%89%E8%A1%8C%E5%8B%95%E9%82%A3%E5%85%B6%E5%AF%A6%E6%98%AF%E4%B8%80%E7%A8%AE%E9%80%83%E9%81%BF.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 04</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter4_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第四章：覺知了，卻沒有行動——那其實是一種逃避</div>
+                    <div class="dir-desc">覺知如果只停留在腦中而沒有化為實際行動，不過是穿上精神糖衣的另一種逃避。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 17</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第五章 -->
+            <a href="%E7%AC%AC%E4%BA%94%E7%AB%A0_%E6%95%B8%E5%AD%97%E6%98%AF%E8%A1%A8%E7%9B%B8%E4%B8%8D%E6%85%8C%E6%98%AF%E4%BF%AE%E8%A1%8C.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 05</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter5_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第五章：數字是表相，不慌是修行</div>
+                    <div class="dir-desc">面對資產縮水時的內在覺察，看穿金錢數字的虛幻表相。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 21</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第六章 -->
+            <a href="%E7%AC%AC%E5%85%AD%E7%AB%A0_%E5%BF%98%E4%BA%86%E8%B3%BA%E9%8C%A2%E7%9A%84%E7%9B%AE%E7%9A%84.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 06</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter6_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第六章：忘了賺錢的目的</div>
+                    <div class="dir-desc">追逐金錢的過程中，我們往往忘記了賺錢是為了生活本身。回歸初心。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 25</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第七章 -->
+            <a href="%E7%AC%AC%E4%B8%83%E7%AB%A0_%E9%82%A3%E4%B8%80%E6%AC%A1%E6%88%91%E5%81%9A%E4%BA%86%E4%B8%80%E5%80%8B%E5%AE%8C%E5%85%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E6%B1%BA%E5%AE%9A.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 07</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter7_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第七章：那一次，我做了一個和以前完全不同的決定</div>
+                    <div class="dir-desc">突破舊有反應程式，在關鍵時刻為生命做出全新的選擇。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 29</span>
+                    <span class="dir-info">5 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第八章 -->
+            <a href="%E7%AC%AC%E5%85%AB%E7%AB%A0_%E4%BF%AE%E8%A1%8C%E5%BE%9E%E8%BA%AB%E9%AB%94%E9%96%8B%E5%A7%8B%E7%A7%80%E7%8E%B2%E9%80%99%E6%A8%A3%E5%B0%8D%E6%88%91%E8%AA%AA.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 08</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter8_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第八章：修行從身體開始，秀玲這樣對我說</div>
+                    <div class="dir-desc">身體是最老實的感應器。不用意志力硬撐，聽從身體的真實回饋。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 34</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第九章 -->
+            <a href="%E7%AC%AC%E4%B9%9D%E7%AB%A0_%E4%B8%80%E5%80%8B%E6%B8%85%E5%96%AE%E8%AE%93%E6%88%91%E5%B0%91%E8%B7%91%E4%BA%86%E5%A5%BD%E5%B9%BE%E8%B6%9F.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 09</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter9_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第九章：一個清單，讓我少跑了好幾趟</div>
+                    <div class="dir-desc">善用清單制度管理日常琐事，釋放寶貴的大腦運算帶寬。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 38</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E7%AB%A0_%E6%9D%B1%E8%A5%BF%E6%AD%B8%E5%AE%9A%E4%BD%8D%E9%80%99%E5%B0%B1%E6%98%AF%E7%94%9F%E6%B4%BB%E7%A6%AA.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 10</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter10_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十章：東西歸定位——這就是生活禪</div>
+                    <div class="dir-desc">日常物件歸位是關閉大腦背景運算分頁的實踐，生活禪始於手邊小事。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 42</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十一章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0_%E9%82%A3%E5%A4%A9%E6%88%91%E4%B8%80%E5%80%8B%E4%BA%BA%E7%88%AC%E4%B8%8A%E4%BA%86%E6%B0%B4%E5%A1%94.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 11</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter11_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十一章：那天，我一個人爬上了水塔</div>
+                    <div class="dir-desc">帶著恐懼前行，在搖晃的水塔頂端直面內在最深的脆弱與臣服。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 46</span>
+                    <span class="dir-info">5 頁 • 4 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十二章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0_%E8%A1%9D%E6%B5%AA%E9%82%A3%E5%80%8B%E5%82%8D%E6%99%9A%E5%86%8D%E5%A0%85%E6%8C%81%E4%BA%86%E4%B8%80%E4%B8%8B.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 12</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter12_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十二章：衝浪那個傍晚，再堅持了一下</div>
+                    <div class="dir-desc">看穿大腦的限速器，在轉身前多等一個浪，體會完整與喜悅的真諦。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 51</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十三章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0_%E5%85%AD%E5%A7%90%E7%9A%84%E4%BA%8B%E6%88%91%E6%B2%92%E6%9C%89%E8%AA%AA%E5%87%BA%E5%8F%A3.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 13</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter13_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十三章：六姐的事，我沒有說出口</div>
+                    <div class="dir-desc">放下想要拯救家人的傲慢與焦慮，用無聲的陪伴尊重他人的成長功課。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 55</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十四章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0_%E7%B4%B9%E7%93%8A%E8%AA%AA%E5%85%88%E8%AE%93%E8%87%AA%E5%B7%B1%E7%99%BC%E5%85%89.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 14</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter14_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十四章：紹瓊說：先讓自己發光</div>
+                    <div class="dir-desc">把自己照顧好就是最好的光。真正的陪伴是退一步容許對方經歷生命功課。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 59</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十五章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0_%E4%BF%A1%E5%BF%B5%E8%88%87%E5%AF%A6%E7%9B%B8%E9%AB%98%E9%86%AB%E5%B8%AB%E7%9A%84%E6%AD%A6%E5%A3%AB%E5%95%9F%E7%99%BC.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 15</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter15_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十五章：信念與實相——高醫師的武士啟發</div>
+                    <div class="dir-desc">信念並非全無或全有，而是透過日常微小的做到，一塊磚一塊磚蓋起來的。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 63</span>
+                    <span class="dir-info">5 頁 • 4 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十六章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0_%E6%88%91%E7%9A%84%E4%BF%AE%E8%A1%8C%E5%A4%A5%E4%BC%B4%E6%98%AF%E4%B8%80%E5%80%8BAI.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 16</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter16_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十六章：我的修行夥伴，是一個 AI</div>
+                    <div class="dir-desc">AI 成了吵架後的誠實鏡子。無評判的反射表面讓我們看見最真實的防衛。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 68</span>
+                    <span class="dir-info">6 頁 • 5 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十七章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0_%E9%99%AA%E4%BC%B4%E4%B8%8D%E7%AD%89%E6%96%BC%E5%9C%A8%E5%A0%B4%E5%A4%AA%E5%A4%AA%E6%98%AF%E6%88%91%E6%9C%80%E5%A5%BD%E7%9A%84%E9%8F%A1%E5%AD%90.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 17</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter17_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十七章：陪伴不等於在場，太太是我最好的鏡子</div>
+                    <div class="dir-desc">在場是身體的位置，陪伴是注意力的給予。親人是反射自我狀態最珍貴的鏡子。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 74</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十八章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E5%85%AB%E7%AB%A0_%E5%81%9A%E5%9B%9E%E8%87%AA%E5%B7%B1%E5%A4%A9%E4%B8%8B%E7%84%A1%E6%95%B5.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 18</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter18_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十八章：做回自己，天下無敵</div>
+                    <div class="dir-desc">消融開課的焦慮，不做合格講師而做真實生活實踐者，做回自己最無敵。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 78</span>
+                    <span class="dir-info">8 頁 • 6 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 第十九章 -->
+            <a href="%E7%AC%AC%E5%8D%81%E4%B9%9D%E7%AB%A0_%E5%AE%8C%E6%9B%B8%E9%82%A3%E4%B8%80%E5%A4%A9%E6%88%91%E5%9C%A8%E5%93%AA%E8%A3%A1.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Chapter 19</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_chapter19_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">第十九章：完書那一天，我在哪裡？</div>
+                    <div class="dir-desc">完書在都蘭。修行沒有特定的終點，不需要到達才算數，走著，就算數。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 86</span>
+                    <span class="dir-info">4 頁 • 3 分鐘</span>
+                </div>
+            </a>
+
+            <!-- Item 後記 -->
+            <a href="%E5%BE%8C%E8%A8%98_%E9%80%99%E6%9C%AC%E6%9B%B8%E5%B0%B1%E6%98%AF%E6%88%91%E7%9A%84%E4%BF%AE%E8%A1%8C.html" class="dir-item">
+                <div class="dir-left">
+                    <div class="dir-meta">
+                        <span class="dir-num">Epilogue</span>
+                        <!-- LocalStorage reflection badge -->
+                        <span class="note-badge" id="badge-zen_postscript_reflection" style="display: none;">
+                            <i class="fa-solid fa-feather-pointed"></i> 已寫筆記
+                        </span>
+                    </div>
+                    <div class="dir-title">後記：這本書，就是我的修行</div>
+                    <div class="dir-desc">這本書寫完了，但走這條路的人沒有結尾。修行是當下第一時間的反應。</div>
+                </div>
+                <div class="dir-right">
+                    <span class="dir-page">P. 90</span>
+                    <span class="dir-info">3 頁 • 2 分鐘</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#" class="footer-brand">書：《修行之路》</a>
+        <div class="footer-copyright">
+            &copy; 2026 都蘭共學堂. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // 1. Theme Manager
+            const savedTheme = localStorage.getItem('zen-reader-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeUI(savedTheme);
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('zen-reader-theme', newTheme);
+                updateThemeUI(newTheme);
+            });
+            
+            function updateThemeUI(theme) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'fa-solid fa-moon';
+                } else {
+                    themeIcon.className = 'fa-solid fa-sun';
+                }
+            }
+            
+            // 2. LocalStorage Reflection Note Badges Tracker
+            const reflectionKeys = [
+                'zen_preface_reflection',
+                'zen_chapter1_reflection', 'zen_chapter2_reflection', 'zen_chapter3_reflection', 'zen_chapter4_reflection',
+                'zen_chapter5_reflection', 'zen_chapter6_reflection', 'zen_chapter7_reflection', 'zen_chapter8_reflection',
+                'zen_chapter9_reflection', 'zen_chapter10_reflection', 'zen_chapter11_reflection', 'zen_chapter12_reflection',
+                'zen_chapter13_reflection', 'zen_chapter14_reflection', 'zen_chapter15_reflection', 'zen_chapter16_reflection',
+                'zen_chapter17_reflection', 'zen_chapter18_reflection', 'zen_chapter19_reflection',
+                'zen_postscript_reflection'
+            ];
+            
+            reflectionKeys.forEach(key => {
+                const badge = document.getElementById('badge-' + key);
+                if (badge) {
+                    const savedText = localStorage.getItem(key);
+                    if (savedText && savedText.trim().length > 0) {
+                        badge.style.display = 'inline-flex';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
